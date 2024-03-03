@@ -10,6 +10,7 @@ import { useSearchParams } from 'react-router-dom'
 import SelectCustomer from '@/components/shared/SelectCustomer'
 import { Button } from '@/components/ui'
 import { getPrettyDate } from '@/utils/get-pretty-date'
+import { HiOutlineTrash } from 'react-icons/hi'
 
 const Bills = () => {
   const params = useBillQueryParams()
@@ -60,6 +61,7 @@ const Bills = () => {
             {...entityProps}
             toolItem={
               <>
+                {Object.keys(params).length !== 0 && <Button icon={<HiOutlineTrash />} size='sm' onClick={()=>setSearchParams({})}>Limpiar Filtros</Button>}
                 <SelectEnterprise 
                 noTitle
                 enterprise_id={params.enterpriseId} 
@@ -71,24 +73,25 @@ const Bills = () => {
                 {
                   [
                     {
-                      label:'dia',
+                      label:'1D',
                       days:1
                     },
                     {
-                      label:'semana',
+                      label:'7D',
                       days:7
                     },
                     {
-                      label:'mes',
+                      label:'1M',
                       days:30
                     },
                     {
-                      label:'anno',
+                      label:'1Y',
                       days:365
                     }
                   ].map(({label,days})=><Button 
                     key={label}
                     size='sm'
+                    variant={days===params.days?'solid':'default'}
                     onClick={()=>setSearchParams({...params,days} as any)}
                     >
                       {label}

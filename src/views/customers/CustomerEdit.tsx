@@ -21,6 +21,7 @@ const CustomerEdit = () => {
             useUpdate={useUpdateCustomerMutation}
             useDelete={useDeleteCustomerMutation}
             {...entityProps}
+            transformRequest={(req)=>({...req,enterprise_id})}
             postComponent={
                 <SelectEnterprise enterprise_id={enterprise_id} setEnterpriseId={setEnterpriseId}/>
             }
