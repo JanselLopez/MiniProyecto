@@ -11,7 +11,7 @@ import { REDIRECT_URL_KEY } from '@/constants/app.constant'
 import { useNavigate } from 'react-router-dom'
 import useQuery from './useQuery'
 import type { SignInCredential, SignUpCredential } from '@/@types/auth'
-import { useLoginMutation, useRegisterMutation } from '@/store/api/slices/users'
+import { useLoginMutation, useLogoutMutation, useRegisterMutation } from '@/store/api/slices/users'
 
 type Status = 'success' | 'failed'
 
@@ -23,6 +23,7 @@ function useAuth() {
     const query = useQuery()
 
     const [login] = useLoginMutation();
+    const [logout] = useLogoutMutation();
     const [register] = useRegisterMutation();
 
     const { token, signedIn } = useAppSelector((state) => state.auth.session)
@@ -117,7 +118,7 @@ function useAuth() {
     }
 
     const signOut = async () => {
-        await apiSignOut()
+        await logout()
         handleSignOut()
     }
 

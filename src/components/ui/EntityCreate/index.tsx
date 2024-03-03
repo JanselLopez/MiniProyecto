@@ -1,11 +1,6 @@
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useChangeNotification } from '../toast/toast'
-import { OnDeleteCallback } from '@/views/sales/ProductForm'
 import {
-    AdaptableCard,
-    ConfirmDialog,
-    DoubleSidedImage,
-    Loading,
     RichTextEditor,
     StickyFooter,
 } from '@/components/shared'
@@ -14,16 +9,12 @@ import { cloneDeep } from 'lodash'
 import { FormContainer, FormItem } from '../Form'
 import { ReactNode, useMemo, useState } from 'react'
 import Button from '../Button'
-import { HiOutlineTrash } from 'react-icons/hi'
 import { AiOutlineSave } from 'react-icons/ai'
 import Input from '../Input'
 import * as Yup from 'yup'
-import ProductImages from '@/views/sales/ProductForm/ProductImages'
-import FieldImage from '@/views/sales/ProductForm/ProductImages'
-import { useAddMediaMutation } from '@/store/api/slices/media'
-import { randomUUID } from 'crypto'
 import { InputProps } from '../EntityEdit'
 import { imageToBase64 } from '@/utils/imgTo64'
+import FieldImage from '../ProductImages'
 
 export default ({
     fields,
@@ -46,7 +37,6 @@ export default ({
 }) => {
     const [create] = useCreate()
     const navigate = useNavigate()
-    const [uploadMedia, res] = useAddMediaMutation()
     const createNotification = useChangeNotification(
         entity,
         'creado',

@@ -63,38 +63,6 @@ const _UserDropdown = ({ className }: CommonProps) => {
                 renderTitle={UserAvatar}
                 placement="bottom-end"
             >
-                {/* <Dropdown.Item variant="header">
-                    <div className="py-2 px-3 flex items-center gap-2">
-                        <Avatar shape="circle" icon={<FaUser/>} />
-                        <div>
-                            <div className="font-bold text-gray-900 dark:text-gray-100">
-                                {userName}
-                            </div>
-                            <div className="text-xs">{email}</div>
-                        </div>
-                    </div>
-                </Dropdown.Item>
-                <Dropdown.Item variant="divider" />
-                {dropdownItemList.map((item) => (
-                    <Dropdown.Item
-                        key={item.label}
-                        eventKey={item.label}
-                        className="mb-1 px-0"
-                    >
-                        <Link 
-                            className="flex h-full w-full px-2" 
-                            to={item.path}
-                        >
-                            <span className="flex gap-2 items-center w-full">
-                                <span className="text-xl opacity-50">
-                                    {item.icon}
-                                </span>
-                                <span>{item.label}</span>
-                            </span>
-                        </Link>
-                    </Dropdown.Item>
-                ))}
-                <Dropdown.Item variant="divider" /> */}
                 <Dropdown.Item
                     eventKey="Sign Out"
                     className="gap-2"

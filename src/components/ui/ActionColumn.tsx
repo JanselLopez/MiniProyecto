@@ -7,8 +7,8 @@ import {
 import { HiOutlinePencil, HiOutlineTrash } from 'react-icons/hi'
 import { useNavigate } from 'react-router-dom'
 import { EntityDeleteBtn } from './EntityDeleteBtn'
-import { OnDeleteCallback } from '@/views/sales/ProductForm'
 import { useChangeNotification } from './toast/toast'
+import { OnDeleteCallback } from './EntityEdit'
 
 const ActionColumn = ({
     id,

@@ -1,7 +1,6 @@
 import EntityCreate from '@/components/ui/EntityCreate'
 import { entityProps } from './constants'
 import { useSearchParams } from 'react-router-dom'
-import { useAddTermMutation } from '@/store/api/slices/terms'
 import { useCreateTaxMutation } from '@/store/api/slices/taxes'
 
 const TaxCreate = () => {

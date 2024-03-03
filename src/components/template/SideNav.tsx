@@ -16,6 +16,7 @@ import useResponsive from '@/utils/hooks/useResponsive'
 import { useAppSelector } from '@/store'
 import { useDispatch } from 'react-redux'
 import { setCollegeId } from '@/store/slices/college'
+import useThemeClass from '@/utils/hooks/useThemeClass'
 
 const sideNavStyle = {
     width: SIDE_NAV_WIDTH,
@@ -28,6 +29,8 @@ const sideNavCollapseStyle = {
 }
 
 const SideNav = () => {
+    const theme = useThemeClass()
+    console.log({theme})
     const themeColor = useAppSelector((state) => state.theme.themeColor)
     const primaryColorLevel = useAppSelector(
         (state) => state.theme.primaryColorLevel
@@ -93,15 +96,11 @@ const SideNav = () => {
                     )}
                 >
                     <div className="side-nav-header py-8 pr-16">
-                        <Logo
-                            mode={logoMode()}
-                            type={sideNavCollapse ? 'streamline' : 'full'}
-                            className={
-                                sideNavCollapse
+                        <h2 className={
+                                (sideNavCollapse
                                     ? SIDE_NAV_CONTENT_GUTTER
-                                    : LOGO_X_GUTTER
-                            }
-                        />
+                                    : LOGO_X_GUTTER) + ` ${theme.textTheme}`
+                            }>MiniProyecto</h2>
                     </div>
                     {sideNavCollapse ? (
                         menuContent

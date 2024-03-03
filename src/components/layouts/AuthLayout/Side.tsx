@@ -27,16 +27,12 @@ const Side = ({ children, content, ...rest }: SideProps) => {
                         /> */}
                         <div className="text-white">
                             <div className="font-semibold text-2xl">
-                                Educamos contigo.
+                                MiniProyecto.
                             </div>
                         </div>
                     </div>
                     <p className="text-lg text-white opacity-80">
-                        En <b>Momoi</b> fabricamos uniformes escolares de alta
-                        calidad y, a su vez, transmitimos al alumno unos valores
-                        educativos apropiados a la sociedad en la que vivimos.
-                        Nuestros uniformes llevan este ADN, generamos un apoyo
-                        directo al colegio. Educamos contigo.
+                        La aplicación proporciona funcionalidades como el manejo de clientes y empresas y generar tarifas...
                     </p>
                 </div>
                 <span className="text-white">

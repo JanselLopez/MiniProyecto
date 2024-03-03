@@ -28,7 +28,7 @@ const validationSchema = Yup.object().shape({
         .required('El email es requerido'),
     password: Yup.string().required('La contrasenna es requerida').min(6, 'La contrasenna debe tener al menos 6 caracteres')
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W)(?!.*\s).*$/, 'mayúsculas, minúsculas, números y símbolos'),
-    confirmPassword: Yup.string().oneOf(
+    password_confirmation: Yup.string().oneOf(
         [Yup.ref('password')],
         'Las contrasennas son distintas'
     ),
@@ -45,9 +45,8 @@ const SignUpForm = (props: SignUpFormProps) => {
         values: SignUpFormSchema,
         setSubmitting: (isSubmitting: boolean) => void
     ) => {
-        const { name, password, email } = values
         setSubmitting(true)
-        const result = await signUp({ name, password, email })
+        const result = await signUp(values)
 
         if (result?.status === 'failed') {
             setMessage(result.message)
@@ -67,7 +66,7 @@ const SignUpForm = (props: SignUpFormProps) => {
                 initialValues={{
                     name: '',
                     password: '',
-                    confirmPassword: '',
+                    password_confirmation: '',
                     email: '',
                 }}
                 validationSchema={validationSchema}
@@ -123,14 +122,14 @@ const SignUpForm = (props: SignUpFormProps) => {
                             <FormItem
                                 label="Confirmar contrasenna"
                                 invalid={
-                                    errors.confirmPassword &&
-                                    touched.confirmPassword
+                                    errors.password_confirmation &&
+                                    touched.password_confirmation
                                 }
-                                errorMessage={errors.confirmPassword}
+                                errorMessage={errors.password_confirmation}
                             >
                                 <Field
                                     autoComplete="off"
-                                    name="confirmPassword"
+                                    name="password_confirmation"
                                     placeholder="Confirmar contrasenna"
                                     component={PasswordInput}
                                 />

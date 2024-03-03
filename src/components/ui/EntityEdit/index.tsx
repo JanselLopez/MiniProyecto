@@ -1,6 +1,5 @@
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useChangeNotification } from '../toast/toast'
-import { OnDeleteCallback } from '@/views/sales/ProductForm'
 import {
     AdaptableCard,
     DoubleSidedImage,
@@ -16,10 +15,11 @@ import Button from '../Button'
 import { AiOutlineSave } from 'react-icons/ai'
 import Input from '../Input'
 import * as Yup from 'yup'
-import { useAddMediaMutation } from '@/store/api/slices/media'
-import FieldImage from '@/views/sales/ProductForm/ProductImages'
 import { EntityDeleteBtn } from '../EntityDeleteBtn'
 import { imageToBase64 } from '@/utils/imgTo64'
+import FieldImage from '../ProductImages'
+
+export type OnDeleteCallback = React.Dispatch<React.SetStateAction<boolean>>
 
 export type InputProps = {
     name: string
@@ -68,7 +68,6 @@ export default ({
     const [update] = useUpdate()
     const [deleteItem] = useDelete()
     const navigate = useNavigate()
-    const [uploadMedia, res] = useAddMediaMutation()
     const id = params.get('id')
     const { data, isLoading: loading, isFetching } = useQuery(entityKey)
     const isLoading = loading || isFetching

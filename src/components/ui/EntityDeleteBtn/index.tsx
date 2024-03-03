@@ -1,8 +1,8 @@
-import { OnDeleteCallback } from '@/views/sales/ProductForm'
 import { useState } from 'react'
 import Button from '../Button'
 import { HiOutlineTrash } from 'react-icons/hi'
 import { ConfirmDialog } from '@/components/shared'
+import { OnDeleteCallback } from '../EntityEdit'
 
 export const EntityDeleteBtn = ({
     onDelete,

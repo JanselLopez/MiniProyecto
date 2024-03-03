@@ -1,10 +1,6 @@
 import EntityCreate from '@/components/ui/EntityCreate'
 import { entityProps } from './constants'
-import { useAddCategoryMutation } from '@/store/api/slices/categories'
 import { useCreateCustomerMutation } from '@/store/api/slices/customers'
-import { Select } from '@/components/ui'
-import { useGetEnterprisesQuery } from '@/store/api/slices/enterprises'
-import { entityKey } from '../enterprises/constants'
 import { useState } from 'react'
 import SelectEnterprise from '@/components/shared/SelectEnterprise'
 
