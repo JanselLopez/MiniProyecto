@@ -23,7 +23,7 @@ function useAuth() {
     const query = useQuery()
 
     const [login] = useLoginMutation();
-    const [logout] = useLogoutMutation();
+    const [logout, {isLoading:isLoadingLogout}] = useLogoutMutation();
     const [register] = useRegisterMutation();
 
     const { token, signedIn } = useAppSelector((state) => state.auth.session)
@@ -127,6 +127,7 @@ function useAuth() {
         signIn,
         signUp,
         signOut,
+        isLoadingLogout,
     }
 }
 

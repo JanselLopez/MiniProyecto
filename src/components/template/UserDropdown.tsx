@@ -10,6 +10,7 @@ import { FiActivity } from 'react-icons/fi'
 import type { CommonProps } from '@/@types/common'
 import { FaUser } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
+import { Spinner } from '../ui'
 
 type DropdownList = {
     label: string
@@ -40,25 +41,22 @@ const _UserDropdown = ({ className }: CommonProps) => {
         (state) => state.auth.user
     )
 
-    const { signOut } = useAuth()
+    const { signOut, isLoadingLogout } = useAuth()
     const store = useSelector(state=>state)
     console.log({store})
  
     const UserAvatar = (
         <div className={classNames(className, 'flex items-center gap-2')}>
             <Avatar size={32} shape="circle" icon={<FaUser/>} />
-            <div className="hidden md:block">
-                {/* <div className="text-xs capitalize">
-                    {authority?.[0] || 'guest'}
-                </div> */}
-                <div className="font-bold">{"Admin"}</div>
-            </div>
         </div>
     )
 
     return (
         <div>
-            <Dropdown
+            {
+                isLoadingLogout
+                ?<Spinner/>
+                :<Dropdown
                 menuStyle={{ minWidth: 240 }}
                 renderTitle={UserAvatar}
                 placement="bottom-end"
@@ -74,6 +72,7 @@ const _UserDropdown = ({ className }: CommonProps) => {
                     <span>Salir</span>
                 </Dropdown.Item>
             </Dropdown>
+            }
         </div>
     )
 }

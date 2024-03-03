@@ -12,14 +12,14 @@ const SelectTaxes = ({
     setTaxes: (data: any) => any
     className?: string
 }) => {
-    const { data = [], isLoading } = useGetTaxesQuery(enterprise_id,{
+    const { data = [], isLoading, isFetching } = useGetTaxesQuery(enterprise_id,{
         skip:!enterprise_id
     })
     return (
         <div className={className}>
             <h4>Impuestos</h4>
-            {isLoading && <Spinner />}
-            {!isLoading && data?.length === 0 && <p>No hay impuestos que mostrar</p>}
+            {(isLoading || isFetching) && <Spinner />}
+            {!(isLoading || isFetching) && data?.length === 0 && <p>No hay impuestos que mostrar</p>}
             {data?.map((it) => {
                 return (
                     <Checkbox

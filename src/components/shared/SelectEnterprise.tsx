@@ -8,8 +8,8 @@ const SelectEnterprise = ({enterprise_id,setEnterpriseId,noTitle}:{
     setEnterpriseId:(enterprise_id:number)=>void,
     noTitle?:boolean,
 }) => {
-    const {data = [],isLoading} = useGetEnterprisesQuery(entityKey)
-    if(isLoading) {
+    const {data = [],isLoading, isFetching} = useGetEnterprisesQuery(entityKey)
+    if(isLoading || isFetching) {
         return <Spinner/>
     }
     return (

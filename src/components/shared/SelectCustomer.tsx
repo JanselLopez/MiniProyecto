@@ -8,8 +8,8 @@ const SelectCustomer = ({client_id,setClientId,noTitle}:{
     setClientId:(client_id:number)=>void,
     noTitle?:boolean,
 }) => {
-    const {data = [],isLoading} = useGetCustomersQuery(entityKey)
-    if(isLoading) {
+    const {data = [],isLoading, isFetching} = useGetCustomersQuery(entityKey)
+    if(isLoading || isFetching) {
         return <Spinner/>
     }
     return (

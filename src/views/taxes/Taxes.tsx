@@ -3,14 +3,14 @@ import React, { useMemo } from 'react'
 import { entity } from './constants'
 import ActionColumn from '@/components/ui/ActionColumn'
 import { ColumnDef } from '@tanstack/react-table'
-import { Terms as Term } from '@/@types/models'
+import { Tax } from '@/@types/models'
 import { useSearchParams } from 'react-router-dom'
 import { useDeleteTaxMutation, useGetTaxesQuery } from '@/store/api/slices/taxes'
 
 const Taxes = () => {
     const [params] = useSearchParams()
     const id = params.get('id')
-    const columns: ColumnDef<Term>[] = useMemo(
+    const columns: ColumnDef<Tax>[] = useMemo(
         () => [
             {
                 header: 'Nombre',

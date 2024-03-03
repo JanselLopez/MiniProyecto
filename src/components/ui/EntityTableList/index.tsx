@@ -1,10 +1,9 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import DataTable from '@/components/shared/DataTable'
 import type {
     DataTableResetHandle,
     ColumnDef,
 } from '@/components/shared/DataTable'
-import { useCountQuery } from '@/store/api/slices/products'
 
 const EntityTableList = ({ columns, useQuery, statusCode }: { 
     columns: ColumnDef<any>[] 
@@ -12,7 +11,7 @@ const EntityTableList = ({ columns, useQuery, statusCode }: {
     statusCode:any
 }) => {
     const tableRef = useRef<DataTableResetHandle>(null)
-    const { data, isLoading } = useQuery(statusCode)
+    const { data, isLoading, isFetching } = useQuery(statusCode)
     return (
         <>
             <DataTable
@@ -21,7 +20,7 @@ const EntityTableList = ({ columns, useQuery, statusCode }: {
                 data={data}
                 skeletonAvatarColumns={[0]}
                 skeletonAvatarProps={{ className: 'rounded-md' }}
-                loading={isLoading}
+                loading={isLoading || isFetching}
             />
         </>
     )

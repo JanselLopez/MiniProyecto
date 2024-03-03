@@ -1,6 +1,6 @@
 import { ColumnDef } from '@tanstack/react-table'
-import { Bill, Customer } from '@/@types/models'
-import { useMemo, useState } from 'react'
+import { Bill } from '@/@types/models'
+import { useMemo } from 'react'
 import EntityView from '@/components/ui/EntityView'
 import { entityProps } from './constants'
 import { useBillQueryParams } from '@/utils/hooks/useBillQueryParams'
