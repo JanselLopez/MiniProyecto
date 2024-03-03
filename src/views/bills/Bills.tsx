@@ -1,5 +1,5 @@
 import { ColumnDef } from '@tanstack/react-table'
-import { Customer } from '@/@types/models'
+import { Bill, Customer } from '@/@types/models'
 import { useMemo, useState } from 'react'
 import EntityView from '@/components/ui/EntityView'
 import { entityProps } from './constants'
@@ -9,11 +9,12 @@ import SelectEnterprise from '@/components/shared/SelectEnterprise'
 import { useSearchParams } from 'react-router-dom'
 import SelectCustomer from '@/components/shared/SelectCustomer'
 import { Button } from '@/components/ui'
+import { getPrettyDate } from '@/utils/get-pretty-date'
 
 const Bills = () => {
   const params = useBillQueryParams()
   const [_, setSearchParams] = useSearchParams()
-    const columns: ColumnDef<Customer>[] = useMemo(
+    const columns: ColumnDef<Bill>[] = useMemo(
         () => [
             {
                 header: 'Correlativo',
@@ -21,11 +22,15 @@ const Bills = () => {
             },
             {
                 header: 'Cliente',
-                accessorKey: 'client.name',
+                accessorKey: 'client.business.name',
             },
             {
               header: 'Fecha de creada',
               accessorKey: 'created_at',
+              cell: (props) => {
+                const {created_at} = props.row.original
+                return getPrettyDate(created_at)
+              },
             },
             {
               header: 'Servicio o Producto',

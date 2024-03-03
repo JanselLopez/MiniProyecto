@@ -1,12 +1,11 @@
-import { Category, Enterprise } from '@/@types/models'
+import { Enterprise } from '@/@types/models'
 import { Avatar } from '@/components/ui'
 import ActionColumn from '@/components/ui/ActionColumn'
 import EntityView from '@/components/ui/EntityView'
-import { useDeleteCategoryMutation, } from '@/store/api/slices/categories'
 import { ColumnDef } from '@tanstack/react-table'
 import { useMemo } from 'react'
 import { entityKey, entityProps } from './constants'
-import { useCreateEnterpriseMutation, useDeleteEnterpriseMutation, useGetEnterprisesQuery } from '@/store/api/slices/enterprises'
+import { useDeleteEnterpriseMutation, useGetEnterprisesQuery } from '@/store/api/slices/enterprises'
 import { FiPackage } from 'react-icons/fi'
 
 const Enterprises = () => {

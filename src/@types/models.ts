@@ -267,7 +267,7 @@ export type Bill = {
     unit_cost: number
     item: string
     correlative_number: string,
-    created_at: Date,
+    created_at: string,
     id: number,
     total_price_product: number,
     total_price_bill: number,

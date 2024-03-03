@@ -1,10 +1,6 @@
 import { useAppDispatch } from '@/store'
 import useThemeClass from '@/utils/hooks/useThemeClass'
-import {
-    setSelectedProduct,
-    toggleDeleteConfirmation,
-} from '@/views/sales/ProductList/store'
-import { HiOutlinePencil, HiOutlineTrash } from 'react-icons/hi'
+import { HiOutlinePencil } from 'react-icons/hi'
 import { useNavigate } from 'react-router-dom'
 import { EntityDeleteBtn } from './EntityDeleteBtn'
 import { useChangeNotification } from './toast/toast'
