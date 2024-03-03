@@ -11,15 +11,18 @@ type BusinessRes = {
     enterprise_id:number
 }
 
+export const CLIENTS_TAG = "CLIENTS_TAG"
+
 const toCustomer = (it:BusinessRes)=>(({...it,...it.business}) as  Customer)
 
-const customersApi = baseApi.injectEndpoints({
+export const customersApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getCustomers: builder.query<Customer[], string>({
             query: () => BASE,
             transformResponse:(res:{
                 data:BusinessRes[]
-            })=>res?.data?.map(toCustomer)
+            })=>res?.data?.map(toCustomer),
+            providesTags:["CLIENTS_TAG"]
             // keepUnusedDataFor: TEN_YEARS,
             // providesTags: [ORDERS_TAG],
         }),

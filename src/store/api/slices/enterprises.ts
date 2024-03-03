@@ -13,18 +13,20 @@ type BusinessRes = {
     description:string
 }
 
+export const ENTERPRISE_TAG = "ENTERPRISE_TAG"
+
 // enterprise_id?:number
 const toEnterprise = (it:BusinessRes)=>(({...it,...it.business}) as  Enterprise)
 
-const enterprisesApi = baseApi.injectEndpoints({
+export const enterprisesApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getEnterprises: builder.query<Enterprise[], string>({
             query: () => BASE,
             transformResponse:(res:{
                 data:BusinessRes[]
-            })=>res?.data?.map(toEnterprise)
+            })=>res?.data?.map(toEnterprise),
+            providesTags:["ENTERPRISE_TAG"]
             // keepUnusedDataFor: TEN_YEARS,
-            // providesTags: [ORDERS_TAG],
         }),
         createEnterprise: builder.mutation({
             query:(body:Enterprise) => ({

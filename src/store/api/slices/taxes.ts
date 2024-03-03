@@ -9,11 +9,12 @@ import {
 
 const BASE = 'taxes/'
 
-const taxesApi = baseApi.injectEndpoints({
+export const taxesApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getTaxes: builder.query<Terms[], number | undefined>({
             query: (enterprise_id) => `${BASE}find-by-enterprise/` + enterprise_id,
-            transformResponse:(req:{data:Tax[]})=>req?.data
+            transformResponse:(req:{data:Tax[]})=>req?.data,
+            providesTags:["TAXES_TAG"]
             // keepUnusedDataFor: TEN_YEARS,
         }),
         createTax: builder.mutation({

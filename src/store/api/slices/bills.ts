@@ -5,9 +5,7 @@ import { BillQuery } from '@/@types/common'
 
 const BASE = `bills`
 
-const BILLS_TAG = "BILLS_TAG"
-
-const billsApi = baseApi.injectEndpoints({
+export const billsApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         findBills: builder.query<Bill[], string>({
             query: (params:BillQuery) => ({
@@ -17,7 +15,7 @@ const billsApi = baseApi.injectEndpoints({
             }),
             transformResponse:(req:{data:Bill[]})=>req?.data,
             // keepUnusedDataFor: TEN_YEARS,
-            providesTags: [BILLS_TAG],
+            providesTags: ["BILLS_TAG"],
         }),
         createBill: builder.mutation({
             query: (body) => ({
@@ -25,7 +23,7 @@ const billsApi = baseApi.injectEndpoints({
                 method: 'POST',
                 body
             }),
-            invalidatesTags: [BILLS_TAG]
+            invalidatesTags: ["BILLS_TAG"]
         }),
     }),
 })
